@@ -4,45 +4,48 @@ import React from "react";
 import Image from "next/image";
 import siteData from "@/data/medicare.json";
 
-const renderIcon = (icon: string) => {
-  switch (icon) {
-    case "target":
-      return (
-        <svg
-          viewBox="0 0 48 48"
-          className="w-7 h-7 stroke-[#042a4d] fill-none stroke-[2.2]"
-        >
-          <circle cx="24" cy="24" r="18" />
-          <circle cx="24" cy="24" r="11" />
-          <circle cx="24" cy="24" r="4" className="fill-[#042a4d]" />
-          <path d="M35 13l7-7M37 6h5v5" strokeWidth="2.5" />
-        </svg>
-      );
-    case "eye":
-      return (
-        <svg
-          viewBox="0 0 48 48"
-          className="w-7 h-7 stroke-[#00a859] fill-none stroke-[2.2]"
-        >
-          <path d="M6 24s6.5-12 18-12 18 12 18 12-6.5 12-18 12S6 24 6 24z" />
-          <circle cx="24" cy="24" r="6" />
-          <path d="M24 6v-3M13 10l-2-2M35 10l2-2" />
-        </svg>
-      );
-    case "diamond":
-      return (
-        <svg
-          viewBox="0 0 48 48"
-          className="w-7 h-7 stroke-[#042a4d] fill-none stroke-[2.2]"
-        >
-          <path d="M12 18l12-10 12 10-12 22-12-22z" />
-          <path d="M12 18h24M24 8v32M17 18l7 22M31 18l-7 22" />
-          <path d="M8 12l2 2M40 12l-2 2M24 4v2" />
-        </svg>
-      );
-    default:
-      return null;
-  }
+const iconPaths: Record<string, React.ReactNode> = {
+  target: (
+    <>
+      <circle cx="22" cy="26" r="17" />
+      <circle cx="22" cy="26" r="10.5" />
+      <circle cx="22" cy="26" r="4" />
+      <path d="M22 26L38 10" />
+      <path d="M34 14l1-6 5-5-1 6 6-1-5 5z" />
+    </>
+  ),
+  eye: (
+    <>
+      <path d="M4 28s7-11 20-11 20 11 20 11-7 11-20 11S4 28 4 28z" />
+      <circle cx="24" cy="28" r="7" />
+      <path d="M24 24.5v7M20.5 28h7" />
+      <path d="M24 6v5M13 9l2.5 4M35 9l-2.5 4M5 15l3.5 2.5M43 15l-3.5 2.5" />
+    </>
+  ),
+  diamond: (
+    <>
+      <path d="M10 22l7-9h14l7 9-14 20z" />
+      <path d="M10 22h28M17 13l3 9 4-9 4 9 3-9M20 22l4 20 4-20" />
+      <path d="M24 3v5M11 6l3 3.5M37 6l-3 3.5M4 14h4M40 14h4" />
+    </>
+  ),
+};
+
+const renderIcon = (icon: string, green: boolean) => {
+  if (!iconPaths[icon]) return null;
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      className="w-9 h-9"
+      fill="none"
+      stroke={green ? "#00a859" : "#042a4d"}
+      strokeWidth={2.4}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      {iconPaths[icon]}
+    </svg>
+  );
 };
 
 export default function MissionVision({ data }: { data?: any }) {
@@ -50,7 +53,7 @@ export default function MissionVision({ data }: { data?: any }) {
   const { badge, description, list: items, image } = data;
 
   return (
-    <section className="relative w-full py-10 lg:py-12 bg-white select-none">
+    <section className="relative w-full py-10 lg:py-12 bg-gradient-to-br from-[#f7fafd] via-white to-[#f3f8fc] select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-14 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         {/* ── LEFT: Text Content & Cards (Span 7) ── */}
         <div className="lg:col-span-7 flex flex-col">
@@ -82,16 +85,18 @@ export default function MissionVision({ data }: { data?: any }) {
               return (
                 <div
                   key={item.id}
-                  className="bg-white rounded-[22px] p-5 sm:p-6 border border-slate-100 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.06)] transition-all duration-300 flex items-start gap-5"
+                  className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-100 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.07)] transition-all duration-300 flex items-center gap-5 sm:gap-6"
                 >
                   {/* Round Icon */}
                   <div
-                    className={`w-14 h-14 rounded-full flex items-center justify-center shrink-0 ${
-                      isVision ? "bg-[#e8f8f0]" : "bg-[#edf6fd]"
+                    className={`w-[72px] h-[72px] rounded-full flex items-center justify-center shrink-0 ${
+                      isVision ? "bg-[#e6f7ee]" : "bg-[#eaf3fc]"
                     }`}
                   >
-                    {renderIcon(item.icon)}
+                    {renderIcon(item.icon, isVision)}
                   </div>
+
+                  <span className="hidden sm:block w-px self-stretch bg-slate-200 my-1" />
 
                   {/* Card Text */}
                   <div className="flex flex-col">

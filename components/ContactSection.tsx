@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   MapPin,
   Mail,
@@ -17,6 +18,7 @@ import {
 import siteData from "@/data/medicare.json";
 
 export default function ContactSection({ data }: { data?: any }) {
+  const router = useRouter();
   if (!data) return null;
   const { badge, description, infoCards, form, map } = data;
 
@@ -45,7 +47,7 @@ export default function ContactSection({ data }: { data?: any }) {
       alert("Please agree to the Terms & Conditions.");
       return;
     }
-    alert("Message Sent Successfully!");
+    router.push("/thank-you");
   };
 
   const renderIcon = (iconName: string, colorClass: string) => {

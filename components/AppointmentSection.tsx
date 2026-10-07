@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import {
   User,
   Mail,
@@ -18,6 +19,7 @@ import {
 import siteData from "@/data/medicare.json";
 
 export default function AppointmentSection({ data }: { data?: any }) {
+  const router = useRouter();
   if (!data) return null;
   const {
     badge,
@@ -49,7 +51,7 @@ export default function AppointmentSection({ data }: { data?: any }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Appointment Request Submitted!");
+    router.push("/thank-you");
   };
 
   return (
