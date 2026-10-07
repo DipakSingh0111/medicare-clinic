@@ -786,6 +786,10 @@
                   "href": "/book-appointment"
                 },
                 {
+                  "label": "Thank You",
+                  "href": "/thank-you"
+                },
+                {
                   "label": "Contact Us",
                   "href": "/contact"
                 }
