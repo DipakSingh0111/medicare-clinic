@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import siteData from "@/data/medicare.json";
+import { StatsData } from "@/types/medicare.types";
 
 const statSvgProps = {
   viewBox: "0 0 56 56",
@@ -112,8 +112,61 @@ const renderFeatureIcon = (iconName: string) => {
   }
 };
 
-export default function StatsSection() {
-  const { counters, featureCards } = siteData.statsSection;
+function AnimatedCounter({ value }: { value: string }) {
+  const numMatch = value.match(/\d+/);
+  if (!numMatch) return <>{value}</>;
+
+  const num = parseInt(numMatch[0], 10);
+  const prefix = value.slice(0, numMatch.index);
+  const suffix = value.slice(numMatch.index! + numMatch[0].length);
+
+  const [count, setCount] = React.useState(0);
+  const [hasTriggered, setHasTriggered] = React.useState(false);
+  const ref = React.useRef<HTMLSpanElement>(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasTriggered) {
+          setHasTriggered(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [hasTriggered]);
+
+  React.useEffect(() => {
+    if (!hasTriggered) return;
+
+    let startTimestamp: number;
+    const duration = 2000;
+
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      setCount(Math.floor(easeProgress * num));
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }, [num, hasTriggered]);
+
+  return (
+    <span ref={ref}>
+      {prefix}
+      {count}
+      {suffix}
+    </span>
+  );
+}
+
+export default function StatsSection({ data }: { data?: StatsData }) {
+  if (!data) return null;
+  const { list: counters, featureCards } = data;
 
   return (
     <section className="relative w-full pt-10 pb-12 md:pb-20 lg:pb-16 bg-[#00a859] select-none">
@@ -128,7 +181,7 @@ export default function StatsSection() {
               {/* Number and Label */}
               <div className="flex flex-col">
                 <span className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-none mb-1.5">
-                  {item.value}
+                  <AnimatedCounter value={item.value} />
                 </span>
                 <span className="text-emerald-100 text-[13px] sm:text-[14px] font-medium leading-tight">
                   {item.label}

@@ -54,9 +54,9 @@ const renderStepIcon = (icon: string) => {
   }
 };
 
-export default function HowItWorks() {
-  const { howItWorksSection } = siteData;
-  const { badge, titleLine1, titleLine2, steps } = howItWorksSection;
+export default function HowItWorks({ data }: { data?: any }) {
+  if (!data) return null;
+  const { badge, list: steps } = data;
 
   return (
     <section className="relative w-full pt-6 pb-12 lg:pt-10 lg:pb-16 bg-[#f7fbfd]/90 overflow-hidden select-none font-sans">
@@ -73,8 +73,8 @@ export default function HowItWorks() {
 
           {/* Heading */}
           <h2 className="text-[30px] sm:text-[36px] font-extrabold leading-[1.18] tracking-tight">
-            <span className="text-[#042a4d] block">{titleLine1}</span>
-            <span className="text-[#00a859] block">{titleLine2}</span>
+            <span className="text-[#042a4d] block">{data.heading.main}</span>
+            <span className="text-[#00a859] block">{data.heading.highlight}</span>
           </h2>
         </div>
 

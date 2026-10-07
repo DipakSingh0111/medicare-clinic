@@ -4,10 +4,11 @@ import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
-import data from "@/data/medicare.json";
+import { HeroBannerData } from "@/types/medicare.types";
 
-export default function HeroSection() {
-  const slides = data.heroSection;
+export default function HeroSection({ data }: { data?: HeroBannerData }) {
+  if (!data) return null;
+  const slides = data.slides;
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -41,8 +42,8 @@ export default function HeroSection() {
           <div key={slide.id} className="relative w-full h-full shrink-0">
             {/* Background Medical Image */}
             <Image
-              src={slide.image}
-              alt={slide.titlePrefix}
+              src={slide.image.src}
+              alt={slide.badge}
               fill
               priority={slide.id === 1}
               className="object-cover object-center"
@@ -61,10 +62,10 @@ export default function HeroSection() {
 
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] mb-5">
                   <span className="text-[#043365] block">
-                    {slide.titlePrefix}
+                    {slide.heading.main}
                   </span>
                   <span className="text-[#00a859] block">
-                    {slide.titleSuffix}
+                    {slide.heading.highlight}
                   </span>
                 </h1>
                 <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-7 max-w-lg">
@@ -72,10 +73,10 @@ export default function HeroSection() {
                 </p>
 
                 <Link
-                  href={slide.buttonLink}
+                  href={slide.button.href}
                   className="inline-flex items-center gap-3 bg-[#043365] hover:bg-[#032347] text-white font-medium text-sm sm:text-[15px] px-6 py-3.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
                 >
-                  <span>{slide.buttonText}</span>
+                  <span>{slide.button.label}</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

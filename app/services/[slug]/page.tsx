@@ -3,15 +3,18 @@ import FadeIn from "@/components/common/FadeIn";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import siteData from "@/data/medicare.json";
+import rawData from "@/data/medicare.json";
+import { MediCareTemplateData } from "@/types/medicare.types";
 import { notFound } from "next/navigation";
 
+export const instant = false;
+
 export async function generateStaticParams() {
-  const { servicesSection } = siteData;
-  const { servicesList } = servicesSection;
+  const templateData = rawData as unknown as MediCareTemplateData;
+  const servicesList = templateData?.categories?.MediCare?.sections?.Services?.variants?.MediCareServices1?.list || [];
 
   return servicesList.map((service: any) => ({
-    slug: service.link.replace("/services/", ""),
+    slug: service.href.replace("/services/", ""),
   }));
 }
 
@@ -21,12 +24,12 @@ export default async function ServiceDetailsPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const { servicesSection } = siteData;
-  const { servicesList } = servicesSection;
+  const templateData = rawData as unknown as MediCareTemplateData;
+  const servicesList = templateData?.categories?.MediCare?.sections?.Services?.variants?.MediCareServices1?.list || [];
 
   const service = servicesList.find(
     (s: any) =>
-      s.link === `/services/${slug}` ||
+      s.href === `/services/${slug}` ||
       s.slug === slug ||
       s.title.toLowerCase().replace(/\s+/g, "-") === slug,
   );
@@ -119,9 +122,9 @@ export default async function ServiceDetailsPage({
             <ul className="flex flex-col gap-3">
               {servicesList.map((s: any, i: number) => {
                 const linkHref =
-                  s.link === "/service-details"
+                  s.href === "/service-details"
                     ? `/services/${s.title.toLowerCase().replace(/\s+/g, "-")}`
-                    : s.link;
+                    : s.href;
 
                 return (
                   <li key={i}>

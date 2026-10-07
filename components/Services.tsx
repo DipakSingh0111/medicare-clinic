@@ -4,12 +4,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Plus } from "lucide-react";
-import siteData from "@/data/medicare.json";
+import { ServicesData } from "@/types/medicare.types";
 
-export default function Services() {
-  const { servicesSection } = siteData;
-  const { badge, titlePrefix, titleSuffix, description, servicesList } =
-    servicesSection;
+export default function Services({ data }: { data?: ServicesData }) {
+  if (!data) return null;
+  const { badge, description, list: servicesList } = data;
 
   return (
     <section className="relative w-full py-8 bg-white overflow-hidden select-none">
@@ -44,8 +43,8 @@ export default function Services() {
 
           {/* Main Headline */}
           <h2 className="text-3xl sm:text-4xl md:text-[44px] font-extrabold leading-[1.18] tracking-tight mb-4">
-            <span className="text-[#073260]">{titlePrefix}</span>{" "}
-            <span className="text-[#00a859]">{titleSuffix}</span>
+            <span className="text-[#073260]">{data.heading.main}</span>{" "}
+            <span className="text-[#00a859]">{data.heading.highlight}</span>
           </h2>
 
           {/* Description */}
@@ -88,7 +87,7 @@ export default function Services() {
                 {/* Read More Button with Circle Arrow */}
                 <div>
                   <Link
-                    href={service.link}
+                    href={service.href}
                     className="inline-flex items-center gap-2 text-[13px] font-bold text-[#00a859] group-hover:text-[#008f4c] transition-colors"
                   >
                     <span>Read More</span>

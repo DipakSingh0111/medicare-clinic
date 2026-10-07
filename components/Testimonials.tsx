@@ -3,11 +3,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
-import siteData from "@/data/medicare.json";
+import { TestimonialsData } from "@/types/medicare.types";
 
-export default function Testimonials() {
-  const { testimonialSection } = siteData;
-  const { badge, titlePrefix, titleSuffix, testimonials } = testimonialSection;
+export default function Testimonials({ data }: { data?: TestimonialsData }) {
+  if (!data) return null;
+  const { badge, list: testimonials } = data;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeBtn, setActiveBtn] = useState<'prev' | 'next'>('next');
@@ -52,12 +52,10 @@ export default function Testimonials() {
               <span className="w-6 h-[2px] bg-[#00a859] rounded-full inline-block" />
             </div>
 
-            {/* Heading */}
             <h2 className="text-3xl sm:text-4xl md:text-[42px] font-extrabold leading-[1.18] tracking-tight">
-              <span className="text-[#073260] block">{titlePrefix}</span>
-              <span className="text-[#073260]">About </span>
+              <span className="text-[#073260] block">{data.heading.main}</span>
               <span className="text-[#00a859]">
-                {titleSuffix.replace("About ", "")}
+                {data.heading.highlight}
               </span>
             </h2>
           </div>
@@ -128,6 +126,7 @@ export default function Testimonials() {
                         src={item.avatar}
                         alt={item.name}
                         fill
+                        sizes="48px"
                         className="object-cover"
                       />
                     </div>

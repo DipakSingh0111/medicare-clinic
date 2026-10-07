@@ -3,20 +3,18 @@
 import React from "react";
 import Image from "next/image";
 import { CheckCircle2, Play } from "lucide-react";
-import siteData from "@/data/medicare.json";
+import { AboutUsData } from "@/types/medicare.types";
 
-export default function About() {
-  const { aboutSection } = siteData;
+export default function About({ data }: { data?: AboutUsData }) {
+  if (!data) return null;
   const {
     badge,
-    titlePrefix,
-    titleSuffix,
     description,
     images,
     features,
     videoCard,
     quote,
-  } = aboutSection;
+  } = data;
 
   return (
     <section className="relative w-full py-10 lg:py-12 bg-white overflow-hidden select-none">
@@ -34,7 +32,7 @@ export default function About() {
           {/* Top Big Image */}
           <div className="relative w-[80%] sm:w-[75%] aspect-[1.25/1] rounded-[24px] overflow-hidden shadow-xl z-10">
             <Image
-              src={images.mainImage1}
+              src={images.main1}
               alt="Medical Examination"
               fill
               className="object-cover object-center"
@@ -73,7 +71,7 @@ export default function About() {
 
             <div className="w-full h-full rounded-[24px] overflow-hidden border-[6px] border-white shadow-2xl relative">
               <Image
-                src={images.mainImage2}
+                src={images.main2}
                 alt="Surgical Operations"
                 fill
                 className="object-cover object-center"
@@ -95,9 +93,9 @@ export default function About() {
 
           {/* Headline */}
           <h2 className="text-[28px] sm:text-[36px] lg:text-[34px] xl:text-[42px] font-extrabold text-[#043365] leading-[1.2] tracking-tight mb-5">
-            {titlePrefix} <br className="hidden sm:block" />
+            {data.heading.main} <br className="hidden sm:block" />
             <span className="text-[#043365]">With Our </span>
-            <span className="text-[#00a859]">Health Package</span>
+            <span className="text-[#00a859]">{data.heading.highlight}</span>
           </h2>
 
           {/* Description Paragraph */}

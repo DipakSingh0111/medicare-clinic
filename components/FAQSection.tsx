@@ -4,19 +4,17 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, ChevronUp, Phone, ArrowRight } from "lucide-react";
-import siteData from "@/data/medicare.json";
+import { FaqData } from "@/types/medicare.types";
 
-export default function FAQSection() {
-  const { faqSection } = siteData;
+export default function FAQSection({ data }: { data?: FaqData }) {
+  if (!data) return null;
   const {
     badge,
-    titlePrefix,
-    titleSuffix,
     description,
     contactBox,
-    doctorImage,
-    faqs,
-  } = faqSection;
+    image: doctorImage,
+    list: faqs,
+  } = data;
 
   // By default first question open rahega
   const [openId, setOpenId] = useState<string>("01");
@@ -44,8 +42,8 @@ export default function FAQSection() {
 
           {/* Heading */}
           <h2 className="text-[32px] sm:text-4xl md:text-[44px] font-extrabold leading-[1.15] tracking-tight mb-4">
-            <span className="text-[#043365]">{titlePrefix}</span>{" "}
-            <span className="text-[#00a859]">{titleSuffix}</span>
+            <span className="text-[#043365]">{data.heading.main}</span>{" "}
+            <span className="text-[#00a859]">{data.heading.highlight}</span>
           </h2>
 
           {/* Description */}
@@ -158,13 +156,9 @@ export default function FAQSection() {
                 </a>
               </div>
             </div>
-
-            {/* Divider on desktop */}
             <div className="hidden sm:block w-[1px] h-8 bg-slate-200" />
-
-            {/* CTA Button */}
             <Link
-              href={contactBox.btnLink}
+              href={contactBox.btnLink || "/contact"}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#00a859] hover:bg-[#008f4c] text-white text-[13px] font-bold px-4 py-2.5 rounded-xl transition-all shadow-sm shrink-0"
             >
               <span>{contactBox.btnText}</span>

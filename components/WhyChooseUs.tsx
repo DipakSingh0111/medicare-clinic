@@ -102,16 +102,14 @@ const renderCardIcon = (icon: string, color: string) => {
   }
 };
 
-export default function WhyChooseUs() {
-  const { whyChooseUsSection } = siteData;
+export default function WhyChooseUs({ data }: { data?: any }) {
+  if (!data) return null;
   const {
     badge,
-    titlePrefix,
-    titleSuffix,
     description,
-    doctorImage,
-    features,
-  } = whyChooseUsSection;
+    image: doctorImage,
+    list: features,
+  } = data;
 
   return (
     <section className="relative w-full py-10 lg:py-12 bg-white overflow-hidden select-none">
@@ -155,8 +153,8 @@ export default function WhyChooseUs() {
 
           {/* Heading */}
           <h2 className="text-3xl sm:text-4xl md:text-[42px] font-extrabold leading-[1.18] tracking-tight mb-4">
-            <span className="text-[#042a4d]">{titlePrefix}</span>{" "}
-            <span className="text-[#00a859]">{titleSuffix}</span>
+            <span className="text-[#042a4d]">{data.heading.main}</span>{" "}
+            <span className="text-[#00a859]">{data.heading.highlight}</span>
           </h2>
 
           {/* Intro Paragraph */}

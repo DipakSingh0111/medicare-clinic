@@ -4,18 +4,18 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, MapPin, Phone, Mail, ArrowUp } from "lucide-react";
-import siteData from "@/data/medicare.json";
+import { FooterData } from "@/types/medicare.types";
 
-export default function Footer() {
-  const { footerSection } = siteData;
+export default function Footer({ data }: { data?: FooterData }) {
+  if (!data) return null;
   const {
-    aboutText,
-    socialLinks,
+    description: aboutText,
+    socials: socialLinks,
     quickLinks,
-    servicesLinks,
+    services: servicesLinks,
     contactInfo,
     copyright,
-  } = footerSection;
+  } = data;
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

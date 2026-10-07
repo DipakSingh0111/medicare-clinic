@@ -16,10 +16,9 @@ import {
 } from "lucide-react";
 import siteData from "@/data/medicare.json";
 
-export default function ContactSection() {
-  const { contactSection } = siteData;
-  const { badge, titlePrefix, titleSuffix, description, infoCards, form, map } =
-    contactSection;
+export default function ContactSection({ data }: { data?: any }) {
+  if (!data) return null;
+  const { badge, description, infoCards, form, map } = data;
 
   const [formData, setFormData] = useState({
     name: "",
@@ -96,8 +95,8 @@ export default function ContactSection() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-[46px] font-extrabold leading-[1.18] tracking-tight mb-5">
-            <span className="text-[#042a4d]">{titlePrefix}</span>{" "}
-            <span className="text-[#00a859]">{titleSuffix}</span>
+            <span className="text-[#042a4d]">{data.heading.main}</span>{" "}
+            <span className="text-[#00a859]">{data.heading.highlight}</span>
           </h2>
 
           <p className="text-slate-500 text-[15px] sm:text-[16px] leading-relaxed max-w-2xl">

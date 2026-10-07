@@ -45,10 +45,9 @@ const renderIcon = (icon: string) => {
   }
 };
 
-export default function MissionVision() {
-  const { missionVisionSection } = siteData;
-  const { badge, titlePrefix, titleSuffix, description, items, image } =
-    missionVisionSection;
+export default function MissionVision({ data }: { data?: any }) {
+  if (!data) return null;
+  const { badge, description, list: items, image } = data;
 
   return (
     <section className="relative w-full py-10 lg:py-12 bg-white select-none">
@@ -66,8 +65,8 @@ export default function MissionVision() {
 
           {/* Heading */}
           <h2 className="text-3xl sm:text-4xl md:text-[44px] font-extrabold leading-[1.15] tracking-tight mb-4">
-            <span className="text-[#042a4d] block">{titlePrefix}</span>
-            <span className="text-[#00a859]">{titleSuffix}</span>
+            <span className="text-[#042a4d] block">{data.heading.main}</span>
+            <span className="text-[#00a859]">{data.heading.highlight}</span>
           </h2>
 
           {/* Intro Description */}

@@ -4,12 +4,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Calendar, Plus } from "lucide-react";
-import siteData from "@/data/medicare.json";
+import { TeamData } from "@/types/medicare.types";
 
-export default function TeamSection({ limit }: { limit?: number }) {
-  const { doctorsSection } = siteData;
-  const { badge, titlePrefix, titleSuffix, description, doctorsList } =
-    doctorsSection;
+export default function TeamSection({ limit, data }: { limit?: number; data?: TeamData }) {
+  if (!data) return null;
+  const { badge, description, list: doctorsList } = data;
 
   const displayDoctors = limit ? doctorsList.slice(0, limit) : doctorsList;
 
@@ -40,8 +39,8 @@ export default function TeamSection({ limit }: { limit?: number }) {
 
           {/* Main Headline */}
           <h2 className="text-3xl sm:text-4xl md:text-[44px] font-extrabold leading-[1.18] tracking-tight mb-4">
-            <span className="text-[#073260]">{titlePrefix}</span>{" "}
-            <span className="text-[#00a859]">{titleSuffix}</span>
+            <span className="text-[#073260]">{data.heading.main}</span>{" "}
+            <span className="text-[#00a859]">{data.heading.highlight}</span>
           </h2>
 
           {/* Sub-text */}
@@ -71,7 +70,7 @@ export default function TeamSection({ limit }: { limit?: number }) {
                   {/* Hover Par Aane Wala "Appointment Now" Cyan Button */}
                   <div className="absolute inset-x-3 bottom-3 z-10 flex justify-center opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out">
                     <Link
-                      href={doctor.appointmentLink}
+                      href={doctor.href || "/book-appointment"}
                       className="w-full py-2.5 px-4 bg-[#00b4d8] hover:bg-[#0096c7] text-white text-[13px] font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg transition-colors"
                     >
                       <Calendar className="w-4 h-4 stroke-[2.2]" />
@@ -95,7 +94,7 @@ export default function TeamSection({ limit }: { limit?: number }) {
 
                 {/* Arrow Button */}
                 <Link
-                  href={doctor.appointmentLink}
+                  href={doctor.href || "/book-appointment"}
                   aria-label={`View ${doctor.name} profile`}
                   className="w-9 h-9 rounded-xl bg-[#073260] group-hover:bg-white text-white group-hover:text-[#073260] flex items-center justify-center transition-all duration-300 shrink-0 shadow-sm"
                 >

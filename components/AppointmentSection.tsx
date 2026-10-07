@@ -17,19 +17,17 @@ import {
 } from "lucide-react";
 import siteData from "@/data/medicare.json";
 
-export default function AppointmentSection() {
-  const { appointmentSection } = siteData;
+export default function AppointmentSection({ data }: { data?: any }) {
+  if (!data) return null;
   const {
     badge,
-    titlePrefix,
-    titleSuffix,
     description,
     formTitle,
-    doctorImage,
+    image: doctorImage,
     departments,
     timeSlots,
-    features,
-  } = appointmentSection;
+    list: features,
+  } = data;
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -75,8 +73,8 @@ export default function AppointmentSection() {
               </div>
 
               <h2 className="text-3xl sm:text-4xl md:text-[44px] font-extrabold leading-[1.16] tracking-tight mb-4">
-                <span className="text-[#042a4d]">{titlePrefix}</span>{" "}
-                <span className="text-[#00a859]">{titleSuffix}</span>
+                <span className="text-[#042a4d]">{data.heading.main}</span>{" "}
+                <span className="text-[#00a859]">{data.heading.highlight}</span>
               </h2>
 
               <p className="text-slate-500 text-[14px] sm:text-[15px] leading-relaxed">

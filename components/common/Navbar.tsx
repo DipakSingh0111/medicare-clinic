@@ -5,12 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, Menu, X } from "lucide-react";
-import headerData from "@/data/medicare.json";
+import { HeaderData } from "@/types/medicare.types";
 
-export default function Navbar() {
+export default function Navbar({ data }: { data?: HeaderData }) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { navLinks, ctaButton } = headerData;
+  
+  if (!data) return null;
+  const { menu: navLinks, cta: ctaButton } = data;
 
   return (
     <nav className="w-full bg-white shadow-sm border-b border-slate-100">
