@@ -228,10 +228,7 @@ export default function ContactSection({ data }: { data?: any }) {
               </div>
             </form>
           </div>
-
-          {/* ── RIGHT: Map Card ── */}
           <div className="bg-[#f9fafa] border border-slate-100 rounded-[28px] overflow-hidden flex flex-col shadow-sm relative h-[500px] lg:h-auto">
-            {/* Real Google Maps Iframe */}
             <div className="relative flex-1 w-full min-h-[300px]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.83923192776!2d77.0688975472061!3d28.52758200617607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
