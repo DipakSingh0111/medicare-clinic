@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, DM_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Topbar from "@/components/common/Topbar";
 import Navbar from "@/components/common/Navbar";
@@ -8,14 +8,9 @@ import { Suspense } from "react";
 import rawData from "@/data/medicare.json";
 import { MediCareTemplateData } from "@/types/medicare.types";
 
-const poppins = Poppins({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["600", "700"],
-  variable: "--font-poppins",
-});
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-plus-jakarta",
 });
 
 export const metadata: Metadata = {
@@ -32,7 +27,7 @@ export default function RootLayout({
   const sectionData = templateData?.categories?.MediCare?.sections;
 
   return (
-    <html lang="en" className={`${poppins.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${plusJakarta.variable}`}>
       <body className="font-sans text-ink bg-white antialiased">
         <header className="sticky top-0 z-50 w-full flex flex-col shadow-sm">
           <Topbar data={sectionData?.Topbar?.variants?.MediCareTopbar1} />

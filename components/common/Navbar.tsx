@@ -16,7 +16,7 @@ export default function Navbar({ data }: { data?: HeaderData }) {
 
   return (
     <nav className="w-full bg-white shadow-sm border-b border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-14 py-5 sm:py-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-14 py-3 sm:py-3 flex items-center justify-between">
         {/* Brand / Logo */}
         <Link href="/" className="flex items-center">
           <Image
@@ -24,7 +24,7 @@ export default function Navbar({ data }: { data?: HeaderData }) {
             alt="MediCare Clinic Logo"
             width={320}
             height={80}
-            className="w-auto h-16 md:h-[68px] object-contain"
+            className="w-auto h-20 md:h-[84px] object-contain"
             priority
           />
         </Link>

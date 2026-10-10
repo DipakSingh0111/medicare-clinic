@@ -65,7 +65,7 @@ const renderCardIcon = (icon: string, color: string) => {
   return (
     <svg
       viewBox="0 0 48 48"
-      className="w-8 h-8"
+      className="w-10 h-10"
       fill="none"
       stroke={color === "green" ? "#00a859" : "#042a4d"}
       strokeWidth={2.4}
@@ -149,7 +149,7 @@ export default function WhyChooseUs({ data }: { data?: any }) {
                 >
                   {/* Circular Icon Container */}
                   <div
-                    className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 transition-transform ${
+                    className={`w-[72px] h-[72px] rounded-full flex items-center justify-center mb-4 transition-transform ${
                       isGreen ? "bg-[#e6f7ee]" : "bg-[#eaf3fc]"
                     }`}
                   >

@@ -88,7 +88,7 @@
           "variants": {
             "MediCareTopbar1": {
               "address": "123 Healthcare Ave, New York, NY 10001, USA",
-              "phone": "00000 00000"
+              "phone": "+1 00000 00000"
             }
           }
         },
@@ -485,7 +485,7 @@
               "description": "Find answers to common questions about our services, appointments, treatments and patient care. If you have any other questions, feel free to contact us.",
               "contactBox": {
                 "label": "Contact Us",
-                "phone": "00000 00000",
+                "phone": "+1 00000 00000",
                 "btnText": "Book Appointment",
                 "btnLink": "/appointment"
               },
@@ -684,7 +684,7 @@
                 {
                   "id": 3,
                   "title": "Call Center",
-                  "description": "00000 00000\n00000 00000",
+                  "description": "+1 00000 00000\n+1 00000 00000",
                   "icon": "phone",
                   "color": "blue"
                 },
@@ -819,7 +819,7 @@
                 },
                 "phone": {
                   "title": "Phone",
-                  "value": "+91 00000 00000",
+                  "value": "+1 00000 00000",
                   "timing": "Mon - Sat : 9:00 AM - 7:00 PM"
                 },
                 "email": {

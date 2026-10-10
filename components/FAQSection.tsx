@@ -28,7 +28,7 @@ export default function FAQSection({ data }: { data?: FaqData }) {
       {/* Background Soft Shape (Mint Green behind right side) */}
       <div className="absolute top-[10%] right-[-10%] w-[45%] h-[85%] bg-[#edfbf5] rounded-l-[120px] -z-20 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-14 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-14 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
         {/* ── LEFT: FAQ Accordion Column ── */}
         <div className="lg:col-span-7 flex flex-col">
           {/* Subtitle Badge */}

@@ -256,35 +256,7 @@ export default function AppointmentSection({ data }: { data?: any }) {
               </div>
             </div>
 
-            {/* 3 Bottom Feature Badges */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {features.map((item: any) => (
-                <div key={item.id} className="flex items-start gap-3">
-                  {/* Outlined Rounded Icon */}
-                  <div className="w-10 h-10 rounded-xl border border-slate-200 bg-white shadow-sm flex items-center justify-center shrink-0">
-                    {item.icon === "calendar" && (
-                      <Calendar className="w-4 h-4 text-[#042a4d]" />
-                    )}
-                    {item.icon === "doctor" && (
-                      <User className="w-4 h-4 text-[#00a859]" />
-                    )}
-                    {item.icon === "shield" && (
-                      <ShieldCheck className="w-4 h-4 text-[#042a4d]" />
-                    )}
-                  </div>
 
-                  {/* Text */}
-                  <div>
-                    <h4 className="text-[13px] font-bold text-[#042a4d] leading-snug">
-                      {item.title}
-                    </h4>
-                    <p className="text-[11px] text-slate-400 leading-tight mt-0.5">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>

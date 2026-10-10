@@ -1,7 +1,7 @@
 import PageBanner from "@/components/common/PageBanner";
 import FadeIn from "@/components/common/FadeIn";
 
-import StatsSection from "@/components/StatsSection";
+
 import FAQSection from "@/components/FAQSection";
 import rawData from "@/data/medicare.json";
 import { MediCareTemplateData } from "@/types/medicare.types";
@@ -12,7 +12,7 @@ export default function FaqPage() {
 
   if (!sectionData) return null;
   return (
-    <main className="w-full flex flex-col pb-24">
+    <main className="w-full flex flex-col">
       <FadeIn direction="none">
         <PageBanner
           title="FAQ"
@@ -22,9 +22,7 @@ export default function FaqPage() {
       <FadeIn>
         <FAQSection data={sectionData.Faq?.variants?.MediCareFaq1} />
       </FadeIn>
-      <FadeIn>
-        <StatsSection data={sectionData.Stats?.variants?.MediCareStats1} />
-      </FadeIn>
+
     </main>
   );
 }

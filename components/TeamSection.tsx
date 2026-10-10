@@ -13,7 +13,7 @@ export default function TeamSection({ limit, data }: { limit?: number; data?: Te
   const displayDoctors = limit ? doctorsList.slice(0, limit) : doctorsList;
 
   return (
-    <section className="relative w-full pt-16 pb-10 lg:pt-24 lg:pb-14 bg-white overflow-hidden select-none">
+    <section className="relative w-full pt-8 pb-10 lg:pt-12 lg:pb-14 bg-white overflow-hidden select-none">
       {/* ── Background Soft Plus & Dot Accents ── */}
       <div className="absolute top-10 left-6 text-sky-100/70 pointer-events-none -z-10">
         <Plus className="w-16 h-16 stroke-[3.5]" />

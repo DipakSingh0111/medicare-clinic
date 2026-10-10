@@ -32,7 +32,7 @@ export default function ContactSection({ data }: { data?: any }) {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value, type, checked } = e.target as HTMLInputElement;
     setFormData({
@@ -115,7 +115,7 @@ export default function ContactSection({ data }: { data?: any }) {
             >
               <div
                 className={`w-14 h-14 rounded-full flex items-center justify-center shrink-0 text-white ${getBgColor(
-                  card.color
+                  card.color,
                 )}`}
               >
                 {renderIcon(card.icon, "text-white")}
@@ -147,7 +147,10 @@ export default function ContactSection({ data }: { data?: any }) {
               {form.description}
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-5 flex-1 flex flex-col">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-5 flex-1 flex flex-col"
+            >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="relative">
                   <User className="w-[18px] h-[18px] text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -214,37 +217,6 @@ export default function ContactSection({ data }: { data?: any }) {
                   className="w-full h-full min-h-[120px] bg-[#fbfcfd] border border-slate-200 focus:border-[#00a859] focus:bg-white rounded-xl py-4 pl-12 pr-4 text-[14px] text-slate-800 placeholder-slate-400 outline-none transition resize-none"
                 />
               </div>
-
-              <div className="flex items-center gap-3 py-1">
-                <input
-                  type="checkbox"
-                  name="agreed"
-                  id="agreed"
-                  checked={formData.agreed}
-                  onChange={handleChange}
-                  className="w-4 h-4 rounded border-slate-300 text-[#00a859] focus:ring-[#00a859] cursor-pointer"
-                />
-                <label
-                  htmlFor="agreed"
-                  className="text-[13px] text-slate-500 cursor-pointer"
-                >
-                  I agree to the{" "}
-                  <Link
-                    href="/terms"
-                    className="text-[#042a4d] font-semibold hover:text-[#00a859] transition-colors"
-                  >
-                    Terms & Conditions
-                  </Link>{" "}
-                  and{" "}
-                  <Link
-                    href="/privacy"
-                    className="text-[#042a4d] font-semibold hover:text-[#00a859] transition-colors"
-                  >
-                    Privacy Policy
-                  </Link>
-                </label>
-              </div>
-
               <div>
                 <button
                   type="submit"

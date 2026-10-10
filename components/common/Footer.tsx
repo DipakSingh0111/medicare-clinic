@@ -66,7 +66,7 @@ export default function Footer({ data }: { data?: FooterData }) {
                 alt="MediCare Clinic"
                 width={320}
                 height={80}
-                className="h-16 sm:h-[68px] w-auto object-contain"
+                className="h-20 sm:h-[84px] w-auto object-contain"
                 priority
               />
             </Link>
