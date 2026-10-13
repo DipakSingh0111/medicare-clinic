@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import siteData from "@/data/medicare.json";
+import { SectionProps } from "@/types/medicare.types";
 
 const handPaths = (
   <>
@@ -77,7 +78,7 @@ const renderCardIcon = (icon: string, color: string) => {
   );
 };
 
-export default function WhyChooseUs({ data }: { data?: any }) {
+export default function WhyChooseUs({ data }: SectionProps.WhyChooseUs) {
   if (!data) return null;
   const {
     badge,

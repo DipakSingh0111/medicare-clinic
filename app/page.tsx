@@ -24,19 +24,19 @@ export default function Home() {
         <About data={sectionData.AboutUs?.variants?.MediCareAboutUs1} />
       </FadeIn>
       <FadeIn>
-        <Services data={sectionData.Services?.variants?.MediCareServices1 as any} />
+        <Services data={sectionData.Services?.variants?.MediCareServices1} />
       </FadeIn>
       <FadeIn>
-        <StatsSection data={sectionData.Stats?.variants?.MediCareStats1 as any} />
+        <StatsSection data={sectionData.Stats?.variants?.MediCareStats1} />
       </FadeIn>
       <FadeIn>
-        <TeamSection limit={4} data={sectionData.Team?.variants?.MediCareTeam1 as any} />
+        <TeamSection limit={4} data={sectionData.Team?.variants?.MediCareTeam1} />
       </FadeIn>
       <FadeIn>
-        <Testimonials data={sectionData.Testimonials?.variants?.MediCareTestimonials1 as any} />
+        <Testimonials data={sectionData.Testimonials?.variants?.MediCareTestimonials1} />
       </FadeIn>
       <FadeIn>
-        <FAQSection data={sectionData.Faq?.variants?.MediCareFaq1 as any} />
+        <FAQSection data={sectionData.Faq?.variants?.MediCareFaq1} />
       </FadeIn>
     </div>
   );

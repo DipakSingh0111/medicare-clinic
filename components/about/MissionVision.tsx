@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import siteData from "@/data/medicare.json";
+import { SectionProps } from "@/types/medicare.types";
 
 const iconPaths: Record<string, React.ReactNode> = {
   target: (
@@ -48,7 +49,7 @@ const renderIcon = (icon: string, green: boolean) => {
   );
 };
 
-export default function MissionVision({ data }: { data?: any }) {
+export default function MissionVision({ data }: SectionProps.MissionAndVision) {
   if (!data) return null;
   const { badge, description, list: items, image } = data;
 

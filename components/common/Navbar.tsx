@@ -5,9 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, Menu, X } from "lucide-react";
-import { HeaderData } from "@/types/medicare.types";
+import { SectionProps } from "@/types/medicare.types";
 
-export default function Navbar({ data }: { data?: HeaderData }) {
+export default function Navbar({ data }: SectionProps.Header) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   

@@ -2,6 +2,7 @@
 
 import React from "react";
 import siteData from "@/data/medicare.json";
+import { SectionProps } from "@/types/medicare.types";
 
 // Vector icons exact matching screenshot style
 const renderStepIcon = (icon: string) => {
@@ -54,7 +55,7 @@ const renderStepIcon = (icon: string) => {
   }
 };
 
-export default function HowItWorks({ data }: { data?: any }) {
+export default function HowItWorks({ data }: SectionProps.WorkingProcess) {
   if (!data) return null;
   const { badge, list: steps } = data;
 

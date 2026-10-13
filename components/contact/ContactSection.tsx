@@ -16,8 +16,9 @@ import {
   ExternalLink,
 } from "lucide-react";
 import siteData from "@/data/medicare.json";
+import { SectionProps } from "@/types/medicare.types";
 
-export default function ContactSection({ data }: { data?: any }) {
+export default function ContactSection({ data }: SectionProps.ContactPage) {
   const router = useRouter();
   if (!data) return null;
   const { badge, description, infoCards, form, map } = data;
@@ -139,8 +140,8 @@ export default function ContactSection({ data }: { data?: any }) {
             <div className="inline-flex items-center gap-2 mb-3">
               <span className="w-6 h-[2px] bg-[#00a859] rounded-full inline-block" />
               <h3 className="text-3xl sm:text-[34px] font-extrabold leading-tight tracking-tight">
-                <span className="text-[#042a4d]">{form.titlePrefix}</span>{" "}
-                <span className="text-[#00a859]">{form.titleSuffix}</span>
+                <span className="text-[#042a4d]">{form.heading?.main}</span>{" "}
+                <span className="text-[#00a859]">{form.heading?.highlight}</span>
               </h3>
             </div>
             <p className="text-slate-500 text-[14.5px] leading-relaxed mb-8">

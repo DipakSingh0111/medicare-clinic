@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, ChevronUp, Phone, ArrowRight } from "lucide-react";
-import { FaqData } from "@/types/medicare.types";
+import { SectionProps } from "@/types/medicare.types";
 
-export default function FAQSection({ data }: { data?: FaqData }) {
+export default function FAQSection({ data }: SectionProps.Faq) {
   if (!data) return null;
   const {
     badge,

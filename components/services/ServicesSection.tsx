@@ -4,9 +4,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Plus } from "lucide-react";
-import { ServicesData } from "@/types/medicare.types";
+import { SectionProps } from "@/types/medicare.types";
 
-export default function Services({ data }: { data?: ServicesData }) {
+export default function Services({ data }: SectionProps.Services) {
   if (!data) return null;
   const { badge, description, list: servicesList } = data;
 

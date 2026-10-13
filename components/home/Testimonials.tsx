@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
-import { TestimonialsData } from "@/types/medicare.types";
+import { SectionProps } from "@/types/medicare.types";
 
-export default function Testimonials({ data }: { data?: TestimonialsData }) {
+export default function Testimonials({ data }: SectionProps.Testimonials) {
   if (!data) return null;
   const { badge, list: testimonials } = data;
 

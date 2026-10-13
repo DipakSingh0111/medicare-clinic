@@ -17,8 +17,9 @@ import {
   ChevronDown,
 } from "lucide-react";
 import siteData from "@/data/medicare.json";
+import { SectionProps } from "@/types/medicare.types";
 
-export default function AppointmentSection({ data }: { data?: any }) {
+export default function AppointmentSection({ data }: SectionProps.BookAppointment) {
   const router = useRouter();
   if (!data) return null;
   const {

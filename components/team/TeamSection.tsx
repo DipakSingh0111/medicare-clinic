@@ -4,9 +4,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Calendar, Plus } from "lucide-react";
-import { TeamData } from "@/types/medicare.types";
+import { SectionProps } from "@/types/medicare.types";
 
-export default function TeamSection({ limit, data }: { limit?: number; data?: TeamData }) {
+export default function TeamSection({ limit, data }: SectionProps.Team) {
   if (!data) return null;
   const { badge, description, list: doctorsList } = data;
 

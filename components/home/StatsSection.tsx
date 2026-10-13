@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { StatsData } from "@/types/medicare.types";
+import { SectionProps } from "@/types/medicare.types";
 
 const statSvgProps = {
   viewBox: "0 0 56 56",
@@ -164,7 +164,7 @@ function AnimatedCounter({ value }: { value: string }) {
   );
 }
 
-export default function StatsSection({ data }: { data?: StatsData }) {
+export default function StatsSection({ data }: SectionProps.Stats) {
   if (!data) return null;
   const { list: counters, featureCards } = data;
 

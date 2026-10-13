@@ -3,9 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import { CheckCircle2, Play } from "lucide-react";
-import { AboutUsData } from "@/types/medicare.types";
+import { SectionProps } from "@/types/medicare.types";
 
-export default function About({ data }: { data?: AboutUsData }) {
+export default function About({ data }: SectionProps.AboutUs) {
   if (!data) return null;
   const {
     badge,

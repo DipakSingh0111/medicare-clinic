@@ -1,8 +1,8 @@
 import React from "react";
 import { MapPin, Clock, Phone } from "lucide-react";
-import { TopbarData } from "@/types/medicare.types";
+import { SectionProps } from "@/types/medicare.types";
 
-export default function Topbar({ data }: { data?: TopbarData }) {
+export default function Topbar({ data }: SectionProps.Topbar) {
   if (!data) return null;
 
   return (

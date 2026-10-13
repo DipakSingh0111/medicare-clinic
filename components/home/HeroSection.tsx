@@ -4,9 +4,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
-import { HeroBannerData } from "@/types/medicare.types";
+import { SectionProps } from "@/types/medicare.types";
 
-export default function HeroSection({ data }: { data?: HeroBannerData }) {
+export default function HeroSection({ data }: SectionProps.HeroBanner) {
   if (!data) return null;
   const slides = data.slides;
   const [current, setCurrent] = useState(0);

@@ -4,9 +4,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, MapPin, Phone, Mail, ArrowUp } from "lucide-react";
-import { FooterData } from "@/types/medicare.types";
+import { SectionProps } from "@/types/medicare.types";
 
-export default function Footer({ data }: { data?: FooterData }) {
+export default function Footer({ data }: SectionProps.Footer) {
   if (!data) return null;
   const {
     description: aboutText,

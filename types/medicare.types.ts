@@ -87,6 +87,112 @@ export interface GlobalData {
   socials: { name: string; url: string; icon: string }[];
 }
 
+export interface MissionAndVisionData {
+  badge: string;
+  heading: { main: string; highlight: string };
+  description: string;
+  list: { id: number; title: string; description: string; icon: string }[];
+  image: string;
+}
+
+export interface WhyChooseUsData {
+  badge: string;
+  heading: { main: string; highlight: string };
+  description: string;
+  image: string;
+  list: {
+    id: number;
+    icon: string;
+    iconColor: string;
+    title: string;
+    description: string;
+  }[];
+}
+
+export interface BookAppointmentData {
+  badge: string;
+  heading: { main: string; highlight: string };
+  description: string;
+  formTitle: string;
+  image: string;
+  departments: string[];
+  timeSlots: string[];
+  list: { id: number; title: string; description: string; icon: string }[];
+}
+
+export interface ContactPageData {
+  badge: string;
+  heading: { main: string; highlight: string };
+  description: string;
+  infoCards: {
+    id: number;
+    title: string;
+    description: string;
+    icon: string;
+    color: string;
+  }[];
+  form: {
+    heading: { main: string; highlight: string };
+    description: string;
+  };
+  map: {
+    image: string;
+    locationTitle: string;
+    locationAddress: string;
+  };
+}
+
+export interface WorkingProcessData {
+  badge: string;
+  heading: { main: string; highlight: string };
+  list: {
+    stepNumber: number;
+    icon: string;
+    title: string;
+    description: string;
+  }[];
+}
+
+export interface SectionProps<T = any> {
+  data?: T;
+  limit?: number;
+}
+
+export namespace SectionProps {
+  export type Topbar = { data?: TopbarData };
+  export type Header = { data?: HeaderData };
+  export type HeroBanner = { data?: HeroBannerData };
+  export type AboutUs = { data?: AboutUsData };
+  export type Services = { data?: ServicesData };
+  export type Stats = { data?: StatsData };
+  export type Team = { data?: TeamData; limit?: number };
+  export type Testimonials = { data?: TestimonialsData };
+  export type Faq = { data?: FaqData };
+  export type MissionAndVision = { data?: MissionAndVisionData };
+  export type WhyChooseUs = { data?: WhyChooseUsData };
+  export type BookAppointment = { data?: BookAppointmentData };
+  export type ContactPage = { data?: ContactPageData };
+  export type WorkingProcess = { data?: WorkingProcessData };
+  export type Footer = { data?: FooterData };
+}
+
+// Backward compatibility aliases
+export type TopbarProps = SectionProps<TopbarData>;
+export type HeaderProps = SectionProps<HeaderData>;
+export type HeroBannerProps = SectionProps<HeroBannerData>;
+export type AboutUsProps = SectionProps<AboutUsData>;
+export type ServicesProps = SectionProps<ServicesData>;
+export type StatsProps = SectionProps<StatsData>;
+export type TeamProps = SectionProps<TeamData>;
+export type TestimonialsProps = SectionProps<TestimonialsData>;
+export type FaqProps = SectionProps<FaqData>;
+export type MissionAndVisionProps = SectionProps<MissionAndVisionData>;
+export type WhyChooseUsProps = SectionProps<WhyChooseUsData>;
+export type BookAppointmentProps = SectionProps<BookAppointmentData>;
+export type ContactPageProps = SectionProps<ContactPageData>;
+export type WorkingProcessProps = SectionProps<WorkingProcessData>;
+export type FooterProps = SectionProps<FooterData>;
+
 export interface MediCareTemplateData {
   categories: {
     MediCare: {
@@ -102,13 +208,13 @@ export interface MediCareTemplateData {
         Team?: { variants: { MediCareTeam1: TeamData } };
         Testimonials?: { variants: { MediCareTestimonials1: TestimonialsData } };
         Faq?: { variants: { MediCareFaq1: FaqData } };
-        MissionAndVision?: { variants: { MediCareMissionAndVision1: any } };
-        WhyChooseUs?: { variants: { MediCareWhyChooseUs1: any } };
-        BookAppointment?: { variants: { MediCareBookAppointment1: any } };
-        ContactPage?: { variants: { MediCareContactPage1: any } };
-        WorkingProcess?: { variants: { MediCareWorkingProcess1: any } };
+        MissionAndVision?: { variants: { MediCareMissionAndVision1: MissionAndVisionData } };
+        WhyChooseUs?: { variants: { MediCareWhyChooseUs1: WhyChooseUsData } };
+        BookAppointment?: { variants: { MediCareBookAppointment1: BookAppointmentData } };
+        ContactPage?: { variants: { MediCareContactPage1: ContactPageData } };
+        WorkingProcess?: { variants: { MediCareWorkingProcess1: WorkingProcessData } };
         Footer?: { variants: { MediCareFooter1: FooterData } };
-      }
-    }
-  }
+      };
+    };
+  };
 }
