@@ -1,7 +1,7 @@
 import About from "@/components/common/AboutSection";
 import PageBanner from "@/components/common/PageBanner";
-import FadeIn from "@/components/common/FadeIn";
-import Services from "@/components/Services";
+import FadeIn from "@/components/ui/FadeIn";
+import Services from "@/components/services/ServicesSection";
 
 import rawData from "@/data/medicare.json";
 import { MediCareTemplateData } from "@/types/medicare.types";

@@ -1,6 +1,6 @@
 import PageBanner from "@/components/common/PageBanner";
-import FadeIn from "@/components/common/FadeIn";
-import ContactSection from "@/components/ContactSection";
+import FadeIn from "@/components/ui/FadeIn";
+import ContactSection from "@/components/contact/ContactSection";
 import rawData from "@/data/medicare.json";
 import { MediCareTemplateData } from "@/types/medicare.types";
 

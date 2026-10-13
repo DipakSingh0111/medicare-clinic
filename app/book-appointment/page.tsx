@@ -1,7 +1,7 @@
-import AppointmentSection from "@/components/AppointmentSection";
-import FadeIn from "@/components/common/FadeIn";
+import AppointmentSection from "@/components/appointment/AppointmentSection";
+import HowItWorks from "@/components/appointment/HowItWorks";
+import FadeIn from "@/components/ui/FadeIn";
 import PageBanner from "@/components/common/PageBanner";
-import HowItWorks from "@/components/HowItWorks";
 
 import rawData from "@/data/medicare.json";
 import { MediCareTemplateData } from "@/types/medicare.types";

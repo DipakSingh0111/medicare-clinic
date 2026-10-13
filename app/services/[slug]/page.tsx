@@ -1,5 +1,5 @@
 import PageBanner from "@/components/common/PageBanner";
-import FadeIn from "@/components/common/FadeIn";
+import FadeIn from "@/components/ui/FadeIn";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";

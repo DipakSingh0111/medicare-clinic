@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import FadeIn from "@/components/common/FadeIn";
+import FadeIn from "@/components/ui/FadeIn";
 
 export const metadata: Metadata = {
   title: "Thank You – MediCare Clinic",

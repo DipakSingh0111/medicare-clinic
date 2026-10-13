@@ -1,11 +1,11 @@
 import About from "@/components/common/AboutSection";
-import FAQSection from "@/components/FAQSection";
-import HeroSection from "@/components/HeroSection";
-import Services from "@/components/Services";
-import StatsSection from "@/components/StatsSection";
-import TeamSection from "@/components/TeamSection";
-import Testimonials from "@/components/Testimonials";
-import FadeIn from "@/components/common/FadeIn";
+import HeroSection from "@/components/home/HeroSection";
+import StatsSection from "@/components/home/StatsSection";
+import Testimonials from "@/components/home/Testimonials";
+import Services from "@/components/services/ServicesSection";
+import TeamSection from "@/components/team/TeamSection";
+import FAQSection from "@/components/faq/FAQSection";
+import FadeIn from "@/components/ui/FadeIn";
 import rawData from "@/data/medicare.json";
 import { MediCareTemplateData } from "@/types/medicare.types";
 

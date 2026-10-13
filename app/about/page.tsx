@@ -1,8 +1,8 @@
 import About from "@/components/common/AboutSection";
 import PageBanner from "@/components/common/PageBanner";
-import MissionVision from "@/components/MissionVision";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import FadeIn from "@/components/common/FadeIn";
+import MissionVision from "@/components/about/MissionVision";
+import WhyChooseUs from "@/components/about/WhyChooseUs";
+import FadeIn from "@/components/ui/FadeIn";
 import rawData from "@/data/medicare.json";
 import { MediCareTemplateData } from "@/types/medicare.types";
 
